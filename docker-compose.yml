@@ -1,0 +1,8 @@
+version: '3'
+services: 
+  docker-service:
+    build: ./docker-service
+    volumes:
+      - ./docker-service:/app
+    ports: 
+      - 5001:8080
