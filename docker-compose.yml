@@ -3,6 +3,14 @@ services:
   docker-service:
     build: ./docker-service
     volumes:
-      - ./docker-service:/app
+      - ./docker-service:/urs/src/app
     ports: 
       - 5001:8080
+  web:
+    image: nginx:alpine
+    volumes: 
+      - ./web:/usr/share/nginx/html
+    ports: 
+      - 5002:80
+    depends_on: 
+      - docker-service

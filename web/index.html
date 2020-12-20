@@ -9,7 +9,19 @@
     <h1>Hello World</h1>
     <ul id="coursesContainer"></ul>
     <script type="text/javascript">
-
+        var url = 'http://docker-service';
+        // var url = 'http://localhost:5001';
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                var courses = data.course;
+                var courseListContent = '';
+                courses.forEach(e => {
+                    courseListContent += `<li>${e}</li>`;
+                });
+                document.getElementById('coursesContainer').innerHTML = courseListContent
+            })
+            .catch(err => console.log(err))
     </script>
 </body>
 </html>
